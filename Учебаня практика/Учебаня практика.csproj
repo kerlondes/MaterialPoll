@@ -236,6 +236,7 @@
     <Resource Include="icon\glas.jpg" />
     <Resource Include="icon\neglas.jpg" />
     <Resource Include="icon\icon.ico" />
+    <Content Include="db.sql" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
