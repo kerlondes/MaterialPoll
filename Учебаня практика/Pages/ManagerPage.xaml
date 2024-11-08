@@ -9,6 +9,112 @@
       Title="ManagerPage">
 
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Заявки">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top">
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Orders" SelectionChanged="Orders_SelectionChanged" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Width="*" Header="Статус" Binding="{Binding Status}"/>
+                                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button IsEnabled="False" x:Name="EditOrderButton" Content="Редактировать" Margin="0,10,0,0" Width="200" Click="EditOrderButton_Click"/>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Партнёры">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top">
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Partners" SelectionChanged="Partners_SelectionChanged" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Email}"/>
+                                <DataGridTextColumn Width="*" Header="Rating" Binding="{Binding Rating}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Width="200" Margin="0,10,0,0">
+                            <Button x:Name="AddPartnerButton" Content="Добавить" Click="AddPartnerButton_Click" />
+                            <Button IsEnabled="False" x:Name="EditPartnerButton" Content="Редактировать" Margin="0,10,0,0" Click="EditPartnerButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Места реализации">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top">
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="SalePlaces" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding SalePlaceType.Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,100,0,0">
+                            <StackPanel Width="200" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Label Content="Название"/>
+                                <TextBox x:Name="SalePlaceName"/>
+                            </StackPanel>
+                            <StackPanel Width="200" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Label Content="Тип"/>
+                                <ComboBox DisplayMemberPath="Name" x:Name="SalePlaceType"/>
+                            </StackPanel>
+                            <Button x:Name="AddSalePlaceButton" Width="200" Content="Добавить" HorizontalAlignment="Left" Margin="0,20,0,0" Click="AddSalePlaceButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Продажи">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top">
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Sales" Height="285" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Width="*" Header="Партнёр" Binding="{Binding User.Partner.Name}"/>
+                                <DataGridTextColumn Width="*" Header="Место продажи" Binding="{Binding SalePlace.Name}"/>
+                                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,0">
+                            <Button x:Name="AddSaleButton" Content="Добавить" Width="200" Click="AddSaleButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Склад">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top">
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Stores" Height="285" SelectionChanged="Stores_SelectionChanged" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Склад" Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,0">
+                            <Button IsEnabled="False" x:Name="EditStoreButton" Content="Редактировать" Width="200" Click="EditStoreButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Товары">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel VerticalAlignment="Top">
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Products" Height="285" SelectionChanged="Products_SelectionChanged" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding Article}"/>
+                                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding ProductType.Name}"/>
+                                <DataGridTextColumn Width="*" Header="Минимальная цена" Binding="{Binding MinCostForPartner}"/>
+                                <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding Cost}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,0">
+                            <Button x:Name="AddProductButton" Content="Добавить" Width="200" Click="AddProductButton_Click"/>
+                            <Button IsEnabled="False" x:Name="EditProductButton" Content="Редактировать" Width="200" Margin="0,10,0,0" Click="EditProductButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>
