@@ -25,7 +25,6 @@ namespace Учебаня_практика.Pages
         public ManagerPage()
         {
             InitializeComponent();
-
             m_entities = BDEntities.GetInstance();
         }
 
