@@ -1,0 +1,33 @@
+﻿<Window x:Class="Учебаня_практика.windows.CreateOrEditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Учебаня_практика.windows"
+        mc:Ignorable="d"
+        Title="CreateOrEditProductWindow" Height="293" Width="231" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel Margin="10,11,0,0">
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Название"/>
+                <TextBox x:Name="Name"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Тип"/>
+                <ComboBox DisplayMemberPath="Name" x:Name="ProductTypes"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Мин. цена"/>
+                <TextBox x:Name="MinCost"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Цена"/>
+                <TextBox x:Name="Cost"/>
+            </StackPanel>
+            <StackPanel Width="200" Margin="0,10,0,0" HorizontalAlignment="Left" >
+                <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click"/>
+                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="Учебаня_практика.windows.EditStoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Учебаня_практика.windows"
+        mc:Ignorable="d"
+        Title="EditStoreWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel VerticalAlignment="Top">
+            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="MaterialsInStore" Height="232" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Склад" Binding="{Binding Store.Name}"/>
+                    <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Material.Name}"/>
+                    <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Material.MaterialType.Name}"/>
+                    <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,0">
+                <StackPanel Width="200">
+                    <Label Content="Материал"/>
+                    <ComboBox DisplayMemberPath="Name" x:Name="Materials"/>
+                </StackPanel>
+                <StackPanel Width="200">
+                    <Label Content="Количество"/>
+                    <TextBox x:Name="Count"/>
+                </StackPanel>
+                <Button x:Name="AddMaterialButton" Content="Добавить" Margin="0,20,0,0" Click="AddMaterialButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

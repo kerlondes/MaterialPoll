@@ -15,17 +15,18 @@ namespace Учебаня_практика
     
     public partial class BDEntities : DbContext
     {
-        public BDEntities()
-            : base("name=BDEntities")
-        {
-        }
         private static BDEntities m_instance;
+
         public static BDEntities GetInstance()
         {
             if (m_instance == null) m_instance = new BDEntities();
             return m_instance;
         }
-
+        public BDEntities()
+            : base("name=BDEntities")
+        {
+        }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

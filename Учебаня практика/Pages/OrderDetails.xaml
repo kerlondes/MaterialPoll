@@ -1,0 +1,20 @@
+﻿<Page x:Class="Учебаня_практика.Pages.OrderDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Учебаня_практика.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrderDetails" Loaded="Page_Loaded">
+
+    <Grid>
+        <DataGrid x:Name="ProductsInOrder" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
+                <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}"/>
+                <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

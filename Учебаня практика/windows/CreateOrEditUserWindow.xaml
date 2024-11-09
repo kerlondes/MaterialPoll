@@ -1,0 +1,58 @@
+﻿<Window x:Class="Учебаня_практика.windows.CreateOrEditUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Учебаня_практика.windows"
+        mc:Ignorable="d"
+        Icon="../icon/icon.ico"
+        Title="CreateOrEditUserWindow" Height="450" Width="228" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel Margin="10,11,0,0">
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="ФИО"/>
+                <TextBox x:Name="FIO"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Роль"/>
+                <ComboBox DisplayMemberPath="Name" x:Name="Role"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Партнёр"/>
+                <ComboBox DisplayMemberPath="Name" x:Name="Partner"/>
+            </StackPanel>
+
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Пасспорт"/>
+                <TextBox x:Name="Passport"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Логин"/>
+                <TextBox x:Name="Login"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Пароль"/>
+                <TextBox x:Name="Password"/>
+            </StackPanel>
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="Дата рождения"/>
+                <DatePicker x:Name="Birthday"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="100" HorizontalAlignment="Left">
+                    <Label Content="Наличие семьи"/>
+                    <CheckBox x:Name="HaveFamily"/>
+                </StackPanel>
+                <StackPanel Width="100" HorizontalAlignment="Left">
+                    <Label Content="Здоровье"/>
+                    <CheckBox x:Name="Health"/>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Width="200" Margin="0,10,0,0" HorizontalAlignment="Left" >
+                <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click"/>
+                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
