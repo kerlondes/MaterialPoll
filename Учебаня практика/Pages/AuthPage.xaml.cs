@@ -91,10 +91,10 @@ namespace Учебаня_практика.Pages
                 case "Мастер":
                     m_mainWindow.NavigateToMasterPage();
                     break;
-                case "Партнёр":
+                case "Кадры":
                     m_mainWindow.NavigateToPartnerPage();
                     break;
-                case "Кадры":
+                case "Партнёр":
                     m_mainWindow.NavigateToStaffPage();
                     break;
             }
