@@ -92,10 +92,10 @@ namespace Учебаня_практика.Pages
                     m_mainWindow.NavigateToMasterPage();
                     break;
                 case "Кадры":
-                    m_mainWindow.NavigateToPartnerPage();
+                    m_mainWindow.NavigateToStaffPage();
                     break;
                 case "Партнёр":
-                    m_mainWindow.NavigateToStaffPage();
+                    m_mainWindow.NavigateToPartnerPage();
                     break;
             }
 

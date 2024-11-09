@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Учебаня_практика.windows"
         mc:Ignorable="d"
         Icon="../icon/icon.ico"
-        Title="CreateOrEditUserWindow" Height="450" Width="228" Loaded="Window_Loaded">
+        Title="CreateOrEditUserWindow" Height="477" Width="257" Loaded="Window_Loaded">
     <Grid>
         <StackPanel Margin="10,11,0,0">
             <StackPanel Width="200" HorizontalAlignment="Left">
