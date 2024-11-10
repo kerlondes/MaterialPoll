@@ -69,9 +69,16 @@ namespace Учебаня_практика.Pages
                 return;
             }
 
+            // Проверяем, что текущий пользователь установлен
+            if (Session.currentUser == null)
+            {
+                MessageBox.Show("Не удалось определить текущего пользователя");
+                return;
+            }
+
             var orderDto = new Order()
             {
-                UserID = 1,
+                UserID = Session.currentUser.ID, // Используем ID текущего пользователя
                 Date = DateTime.Now,
                 Status = false
             };
@@ -92,10 +99,10 @@ namespace Учебаня_практика.Pages
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
-        private void Orders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void Orders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
         {
             var order = Orders.SelectedItem as Order;
             RemoveOrderButton.IsEnabled = order != null && !order.Status;
@@ -121,7 +128,7 @@ namespace Учебаня_практика.Pages
         private void UpdateOrderList()
         {
             Orders.ItemsSource = m_entities.Orders
-                   .Where(order => order.UserID == 1)
+                   .Where(order => order.UserID == Session.currentUser.ID)
                    .ToList();
         }
     }
