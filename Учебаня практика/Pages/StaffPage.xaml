@@ -10,7 +10,7 @@
 
     <Grid>
         <TabControl>
-            <TabItem Header="Сотрдники">
+            <TabItem Header="Сотрудники">
                 <Grid Background="#FFE5E5E5">
                     <StackPanel>
                         <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Staff" SelectionChanged="Staff_SelectionChanged">

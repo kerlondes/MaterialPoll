@@ -17,6 +17,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}"/>
                                 <DataGridTextColumn Width="*" Header="Статус" Binding="{Binding Status}"/>
+                                <DataGridTextColumn Width="*" Header="Оплата" Binding="{Binding Oplata}"/>
                                 <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
                             </DataGrid.Columns>
                         </DataGrid>

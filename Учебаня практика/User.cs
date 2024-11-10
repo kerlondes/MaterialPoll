@@ -18,6 +18,7 @@ namespace Учебаня_практика
         public User()
         {
             this.AuthHistories = new HashSet<AuthHistory>();
+            this.Orders = new HashSet<Order>();
             this.Sales = new HashSet<Sale>();
             this.Supplies = new HashSet<Supply>();
         }
@@ -32,9 +33,12 @@ namespace Учебаня_практика
         public bool HaveFamily { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public string CardRecvisits { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthHistory> AuthHistories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual Partner Partner { get; set; }
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

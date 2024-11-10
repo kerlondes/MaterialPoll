@@ -69,6 +69,7 @@
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Oplata" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -117,6 +118,8 @@
           <Property Name="ProductArticle" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="Skidka" Type="int" Nullable="false" />
+          <Property Name="CostAfter" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductsInSale">
           <Key>
@@ -189,6 +192,16 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -203,6 +216,7 @@
           <Property Name="HaveFamily" Type="bit" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="CardRecvisits" Type="nvarchar" MaxLength="16" />
         </EntityType>
         <Association Name="FK_AuthHistory_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -285,6 +299,18 @@
             </Principal>
             <Dependent Role="MaterialsInSupply">
               <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -453,6 +479,7 @@
           <EntitySet Name="SalePlaceType" EntityType="Self.SalePlaceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AuthHistory_User" Association="Self.FK_AuthHistory_User">
             <End Role="User" EntitySet="User" />
@@ -481,6 +508,10 @@
           <AssociationSet Name="FK_MaterialsInSupply_Supply" Association="Self.FK_MaterialsInSupply_Supply">
             <End Role="Supply" EntitySet="Supply" />
             <End Role="MaterialsInSupply" EntitySet="MaterialsInSupply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Partner_PartnerType" Association="Self.FK_Partner_PartnerType">
             <End Role="PartnerType" EntitySet="PartnerType" />
@@ -612,6 +643,8 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Oplata" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="ProductsInOrders" Relationship="Self.FK_ProductsInOrder_Order" FromRole="Order" ToRole="ProductsInOrder" />
         </EntityType>
         <EntityType Name="Partner">
@@ -667,6 +700,8 @@
           <Property Name="ProductArticle" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="Skidka" Type="Int32" Nullable="false" />
+          <Property Name="CostAfter" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_ProductsInOrder_Order" FromRole="ProductsInOrder" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductsInOrder_Product" FromRole="ProductsInOrder" ToRole="Product" />
         </EntityType>
@@ -753,6 +788,16 @@
           <NavigationProperty Name="MaterialsInSupplies" Relationship="Self.FK_MaterialsInSupply_Supply" FromRole="Supply" ToRole="MaterialsInSupply" />
           <NavigationProperty Name="User" Relationship="Self.FK_Supply_User" FromRole="Supply" ToRole="User" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -767,7 +812,9 @@
           <Property Name="HaveFamily" Type="Boolean" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CardRecvisits" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AuthHistories" Relationship="Self.FK_AuthHistory_User" FromRole="User" ToRole="AuthHistory" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Partner" Relationship="Self.FK_User_Partner" FromRole="User" ToRole="Partner" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sale_User" FromRole="User" ToRole="Sale" />
@@ -866,6 +913,18 @@
             </Principal>
             <Dependent Role="MaterialsInSupply">
               <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1022,6 +1081,7 @@
           <EntitySet Name="SalePlaceTypes" EntityType="Self.SalePlaceType" />
           <EntitySet Name="Stores" EntityType="Self.Store" />
           <EntitySet Name="Supplies" EntityType="Self.Supply" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_AuthHistory_User" Association="Self.FK_AuthHistory_User">
             <End Role="User" EntitySet="Users" />
@@ -1054,6 +1114,10 @@
           <AssociationSet Name="FK_MaterialsInSupply_Supply" Association="Self.FK_MaterialsInSupply_Supply">
             <End Role="Supply" EntitySet="Supplies" />
             <End Role="MaterialsInSupply" EntitySet="MaterialsInSupplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductsInOrder_Order" Association="Self.FK_ProductsInOrder_Order">
             <End Role="Order" EntitySet="Orders" />
@@ -1175,6 +1239,7 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Oplata" ColumnName="Oplata" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1227,6 +1292,8 @@
                 <ScalarProperty Name="ProductArticle" ColumnName="ProductArticle" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Skidka" ColumnName="Skidka" />
+                <ScalarProperty Name="CostAfter" ColumnName="CostAfter" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1310,6 +1377,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MateriaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MateriaModel.User">
               <MappingFragment StoreEntitySet="User">
@@ -1323,6 +1401,7 @@
                 <ScalarProperty Name="HaveFamily" ColumnName="HaveFamily" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CardRecvisits" ColumnName="CardRecvisits" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

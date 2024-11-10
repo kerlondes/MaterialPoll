@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Учебаня_практика.Properties;
 using Учебаня_практика.windows;
 
 namespace Учебаня_практика.Pages

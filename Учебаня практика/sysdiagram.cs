@@ -12,17 +12,12 @@ namespace Учебаня_практика
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductsInOrder
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public int OrderID { get; set; }
-        public int ProductArticle { get; set; }
-        public int Amount { get; set; }
-        public int Cost { get; set; }
-        public int Skidka { get; set; }
-        public int CostAfter { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
