@@ -8,13 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrderDetails" Loaded="Page_Loaded">
 
-    <Grid>
-        <DataGrid x:Name="ProductsInOrder" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
-                <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}"/>
-                <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+    <Grid Background="#F4E8D3">
+        <StackPanel Margin="10">
+            <TextBlock Text="Детали заказа" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <DataGrid x:Name="ProductsInOrder" AutoGenerateColumns="False" IsReadOnly="True" Background="#FFFFFF" BorderBrush="#E0E0E0" BorderThickness="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}" />
+                    <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}" />
+                    <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Page>

@@ -98,6 +98,9 @@ namespace Учебаня_практика.Pages
                 case "Партнёр":
                     m_mainWindow.NavigateToPartnerPage();
                     break;
+                case "Аналитик":
+                    m_mainWindow.NavigateToAnalystPage();
+                    break;
             }
 
         }

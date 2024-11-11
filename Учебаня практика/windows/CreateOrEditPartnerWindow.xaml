@@ -1,49 +1,67 @@
 ﻿<Window x:Class="Учебаня_практика.windows.CreateOrEditPartnerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Учебаня_практика.windows"
-        mc:Ignorable="d"
-        Title="CreateOrEditPartnerWindow" Height="450" Width="237" Loaded="Window_Loaded">
+        Title="Создание или Редактирование Партнера"
+        Icon="/icon/icon.ico" Height="582" Width="406" 
+        FontFamily="Segoe UI" Background="#FFFFFF"
+        Loaded="Window_Loaded">
+
     <Grid>
-        <StackPanel Margin="10,11,0,0">
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Название"/>
-                <TextBox x:Name="Name"/>
-            </StackPanel>
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Тип"/>
-                <ComboBox DisplayMemberPath="Name" x:Name="Type"/>
-            </StackPanel>
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Директор"/>
-                <TextBox x:Name="Director"/>
+        <!-- Логотип и заголовок -->
+        <StackPanel VerticalAlignment="Top" Margin="10,10,10,0" Height="73">
+            <Image Source="/icon/icon.ico" Height="50" HorizontalAlignment="Center" />
+            <TextBlock Text="Создание или Редактирование Партнера" FontSize="18" 
+                       FontWeight="Bold" Foreground="#333333" TextAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Основное содержимое с дополнительным фоном -->
+        <StackPanel Margin="16,105,15,10" Background="#F4E8D3">
+            <StackPanel Width="250" HorizontalAlignment="Center">
+                <Label Content="Название" Foreground="#333333"/>
+                <TextBox x:Name="Name" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
             </StackPanel>
 
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Email"/>
-                <TextBox x:Name="Email"/>
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="Тип" Foreground="#333333"/>
+                <ComboBox DisplayMemberPath="Name" x:Name="Type" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
             </StackPanel>
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Телефон"/>
-                <TextBox x:Name="PhoneNumber"/>
+
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="Директор" Foreground="#333333"/>
+                <TextBox x:Name="Director" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
             </StackPanel>
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Адрес"/>
-                <TextBox x:Name="Address"/>
+
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="Email" Foreground="#333333"/>
+                <TextBox x:Name="Email" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
             </StackPanel>
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="ИНН"/>
-                <TextBox x:Name="INN"/>
+
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="Телефон" Foreground="#333333"/>
+                <TextBox x:Name="PhoneNumber" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
             </StackPanel>
-            <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="Рейтинг"/>
-                <TextBox x:Name="Rating"/>
+
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="Адрес" Foreground="#333333"/>
+                <TextBox x:Name="Address" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
             </StackPanel>
-            <StackPanel Width="200" Margin="0,10,0,0" HorizontalAlignment="Left" >
-                <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" />
-                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" />
+
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="ИНН" Foreground="#333333"/>
+                <TextBox x:Name="INN" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
+            </StackPanel>
+
+            <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Label Content="Рейтинг" Foreground="#333333"/>
+                <TextBox x:Name="Rating" Background="White" BorderBrush="#67BA80" BorderThickness="1" />
+            </StackPanel>
+
+            <!-- Кнопки с акцентным цветом -->
+            <StackPanel Width="250" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,15,0,0">
+                <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" 
+                        Background="#67BA80" Foreground="White" Width="120" Margin="0,0,10,0" BorderThickness="0" />
+                <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" 
+                        Background="#67BA80" Foreground="White" Width="120" BorderThickness="0" />
             </StackPanel>
         </StackPanel>
     </Grid>

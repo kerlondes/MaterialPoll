@@ -5,38 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Учебаня_практика.windows"
         mc:Ignorable="d"
-        Title="Добавить продажу" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="204">
-                <StackPanel Width="200">
-                    <Label Content="Место реализации"/>
-                    <ComboBox DisplayMemberPath="Name" x:Name="Place"/>
-                </StackPanel>
-                <StackPanel Width="200" Margin="0,0,0,30">
-                    <Label Content="Партнёр"/>
-                    <ComboBox DisplayMemberPath="Partner.Name" x:Name="Partner"/>
-                </StackPanel>
-                <StackPanel Width="200">
-                    <Label Content="Товар"/>
-                    <ComboBox DisplayMemberPath="Name" x:Name="Products"/>
-                </StackPanel>
-                <StackPanel Width="200" Margin="0,10,0,0">
-                    <Label Content="Количество"/>
-                    <TextBox x:Name="Count"/>
-                </StackPanel>
-                <Button x:Name="AddProductButton" Content="Добавить" Margin="0,20,0,0" Click="AddProductButton_Click" />
+        Title="Добавить продажу" Height="764" Width="562" Loaded="Window_Loaded">
+    <Grid Margin="0,0,0,-6">
+        <StackPanel Width="520" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="722">
+            <!-- Логотип и заголовок -->
+            <StackPanel VerticalAlignment="Top" Margin="10,10,10,0" Height="73">
+                <Image Source="/icon/icon.ico" Height="50" HorizontalAlignment="Center" />
+                <TextBlock Text="Добавить продажу" FontSize="18" 
+                       FontWeight="Bold" Foreground="#333333" TextAlignment="Center"/>
             </StackPanel>
-            <StackPanel Width="450" Margin="101,10,0,0" VerticalAlignment="Center">
-                <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="250" x:Name="ProductsInSale">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}"/>
-                        <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
-                        <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}"/>
-                        <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Button x:Name="CreateSaleButton" Content="Добавить продажу" Margin="0,20,0,0" Width="200" Click="CreateSaleButton_Click"/>
+
+            <!-- Основное содержимое с дополнительным фоном -->
+            <StackPanel Margin="16,10,15,10" Background="#F4E8D3" Height="616">
+                <!-- Место реализации -->
+                <StackPanel Width="250" HorizontalAlignment="Center">
+                    <Label Content="Место реализации" Foreground="#333333"/>
+                    <ComboBox DisplayMemberPath="Name" x:Name="Place" Background="White" BorderBrush="#67BA80" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Партнёр -->
+                <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Label Content="Партнёр" Foreground="#333333"/>
+                    <ComboBox DisplayMemberPath="Partner.Name" x:Name="Partner" Background="White" BorderBrush="#67BA80" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Товар -->
+                <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Label Content="Товар" Foreground="#333333"/>
+                    <ComboBox DisplayMemberPath="Name" x:Name="Products" Background="White" BorderBrush="#67BA80" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Количество -->
+                <StackPanel Width="250" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Label Content="Количество" Foreground="#333333"/>
+                    <TextBox x:Name="Count" Background="White" BorderBrush="#67BA80" BorderThickness="1"/>
+                </StackPanel>
+
+                <!-- Кнопки с акцентным цветом -->
+                <StackPanel Width="250" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,15,0,0">
+                    <Button x:Name="AddProductButton" Content="Добавить" Click="AddProductButton_Click" 
+                        Background="#67BA80" Foreground="White" Width="120" Margin="0,0,10,0" BorderThickness="0"/>
+                </StackPanel>
+
+                <!-- Таблица с продуктами -->
+                <StackPanel Width="450" HorizontalAlignment="Left" Margin=" 10,50,0,0" VerticalAlignment="Center">
+
+                    <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="250" x:Name="ProductsInSale">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}"/>
+                            <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button x:Name="CreateSaleButton" Content="Добавить продажу" Margin="0,20,0,0" Width="200" 
+                        Background="#67BA80" Foreground="White" Click="CreateSaleButton_Click"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

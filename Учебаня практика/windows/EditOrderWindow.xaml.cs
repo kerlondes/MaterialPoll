@@ -40,17 +40,12 @@ namespace Учебаня_практика.windows
 
         private void SaveOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            var order = new Order()
-            {
-                ID = m_currentOrder.ID,
-                Status = (bool)Status.IsChecked,
-                Date = m_currentOrder.Date,
-                UserID = m_currentOrder.UserID
-            };
+            // Обновляем существующий объект, вместо создания нового
+            m_currentOrder.Status = (bool)Status.IsChecked;
 
             try
             {
-                m_entities.Orders.AddOrUpdate(order);
+                // Сохраняем изменения
                 m_entities.SaveChanges();
                 MessageBox.Show("Успешно");
                 this.Close();
@@ -60,5 +55,6 @@ namespace Учебаня_практика.windows
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }

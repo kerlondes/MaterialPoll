@@ -5,16 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Учебаня_практика.windows"
         mc:Ignorable="d"
-        Title="EditOrderWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Редактирование заказа" Height="504" Width="803" Loaded="Window_Loaded">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Label Content="Дата:"/>
-                    <Label x:Name="Date" Content="01.01.01"/>
+        <!-- Логотип и заголовок -->
+        <StackPanel VerticalAlignment="Top" Margin="10,10,10,0" Height="73">
+            <Image Source="/icon/icon.ico" Height="50" HorizontalAlignment="Center" />
+            <TextBlock Text="Редактирование заказа" FontSize="18" 
+                       FontWeight="Bold" Foreground="#333333" TextAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Основное содержимое с фоном -->
+        <StackPanel Margin="16,105,15,10" Background="#F4E8D3">
+            <!-- Дата -->
+            <StackPanel Width="250" HorizontalAlignment="Left" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Дата" Foreground="#333333"/>
+                    <Label x:Name="Date" Content="01.01.01" Foreground="#333333"/>
                 </StackPanel>
             </StackPanel>
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="350" x:Name="ProductsInOrder" Width="750">
+
+            <!-- Таблица с товарами -->
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="250" x:Name="ProductsInOrder" Width="750" Margin="0,10,0,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}"/>
                     <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
@@ -23,14 +34,20 @@
                     <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding Cost}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Margin="0,0,0,0" VerticalAlignment="Center">
-                <StackPanel>
-                    <StackPanel Width="100" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
-                        <Label Content="Статус заказа"/>
-                        <CheckBox x:Name="Status" Margin="0,7,0,0"/>
-                    </StackPanel>
+
+            <!-- Статус заказа -->
+            <StackPanel Width="250" HorizontalAlignment="Left" Margin="0,8,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Статус заказа" Foreground="#333333"/>
+                    <CheckBox x:Name="Status" Margin="0,7,0,0"/>
                 </StackPanel>
-                <Button x:Name="SaveOrderButton" Width="200" Content="Сохранить" Margin="0,5,0,0" Click="SaveOrderButton_Click"/>
+            </StackPanel>
+
+            <!-- Кнопка сохранения -->
+            <StackPanel Width="250" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,15,0,0">
+                <Button x:Name="SaveOrderButton" Width="200" Content="Сохранить" 
+                        Background="#67BA80" Foreground="White" BorderThickness="0" 
+                        Click="SaveOrderButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

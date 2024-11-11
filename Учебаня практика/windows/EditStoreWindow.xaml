@@ -5,10 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Учебаня_практика.windows"
         mc:Ignorable="d"
-        Title="EditStoreWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Редактирование склада" Height="562" Width="821" Loaded="Window_Loaded">
     <Grid>
-        <StackPanel VerticalAlignment="Top">
-            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="MaterialsInStore" Height="232" >
+        <!-- Логотип и заголовок -->
+        <StackPanel VerticalAlignment="Top" Margin="10,10,10,0" Height="73">
+            <Image Source="/icon/icon.ico" Height="50" HorizontalAlignment="Center" />
+            <TextBlock Text="Редактирование склада" FontSize="18" 
+                       FontWeight="Bold" Foreground="#333333" TextAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Основное содержимое с фоном -->
+        <StackPanel Margin="16,105,15,10" Background="#F4E8D3">
+            <!-- Таблица с материалами -->
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="250" x:Name="MaterialsInStore" Width="750" Margin="0,10,0,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="Склад" Binding="{Binding Store.Name}"/>
                     <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Material.Name}"/>
@@ -16,16 +25,25 @@
                     <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <!-- Добавление материала -->
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,0">
-                <StackPanel Width="200">
-                    <Label Content="Материал"/>
+                <!-- Выбор материала -->
+                <StackPanel Width="200" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Label Content="Материал" Foreground="#333333"/>
                     <ComboBox DisplayMemberPath="Name" x:Name="Materials"/>
                 </StackPanel>
-                <StackPanel Width="200">
-                    <Label Content="Количество"/>
+
+                <!-- Ввод количества -->
+                <StackPanel Width="200" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Label Content="Количество" Foreground="#333333"/>
                     <TextBox x:Name="Count"/>
                 </StackPanel>
-                <Button x:Name="AddMaterialButton" Content="Добавить" Margin="0,20,0,0" Click="AddMaterialButton_Click"/>
+
+                <!-- Кнопка добавления -->
+                <Button x:Name="AddMaterialButton" Content="Добавить" Margin="0,20,0,0" Width="200" 
+                        Background="#67BA80" Foreground="White" BorderThickness="0" 
+                        Click="AddMaterialButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

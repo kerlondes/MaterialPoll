@@ -102,7 +102,8 @@ namespace Учебаня_практика.Pages
 
         private void Orders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditOrderButton.IsEnabled = Orders.SelectedItem != null;
+            var order = Orders.SelectedItem as Order;
+            EditOrderButton.IsEnabled = Orders.SelectedItem != null && order.Oplata && order.Proizweden && !order.Status;
         }
 
         private void EditStoreButton_Click(object sender, RoutedEventArgs e)

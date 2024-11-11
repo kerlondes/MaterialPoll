@@ -70,6 +70,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Oplata" Type="bit" Nullable="false" />
+          <Property Name="Proizweden" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -644,6 +645,7 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Oplata" Type="Boolean" Nullable="false" />
+          <Property Name="Proizweden" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="ProductsInOrders" Relationship="Self.FK_ProductsInOrder_Order" FromRole="Order" ToRole="ProductsInOrder" />
         </EntityType>
@@ -1240,6 +1242,7 @@
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Oplata" ColumnName="Oplata" />
+                <ScalarProperty Name="Proizweden" ColumnName="Proizweden" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

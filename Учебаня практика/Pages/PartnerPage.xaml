@@ -8,58 +8,67 @@
       d:DesignHeight="450"
       Title="PartnerPage" Loaded="Page_Loaded" Width="1062">
 
-    <Grid>
-        <TabControl>
+    <Grid Background="#F4E8D3">
+        <TabControl Margin="10">
+            <!-- Просмотр каталога продукции -->
             <TabItem Header="Просмотр каталога продукции">
                 <Grid>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="204">
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <!-- Левая панель с фильтрами -->
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" Width="220">
                             <StackPanel Width="200">
-                                <Label Content="Фильтрация по типу"/>
-                                <ComboBox x:Name="TypeProduct" SelectionChanged="TypeProduct_SelectionChanged"/>
+                                <Label Content="Фильтрация по типу" FontSize="14" />
+                                <ComboBox x:Name="TypeProduct" SelectionChanged="TypeProduct_SelectionChanged" Margin="0,10"/>
                             </StackPanel>
-                            <StackPanel Width="200" Margin="0,10,0,0">
-                                <Label Content="Поиск по названию"/>
-                                <TextBox x:Name="NameFind" TextChanged="NameFind_TextChanged"/>
+                            <StackPanel Width="200" Margin="0,10">
+                                <Label Content="Поиск по названию" FontSize="14" />
+                                <TextBox x:Name="NameFind" TextChanged="NameFind_TextChanged" Margin="0,10"/>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel Width="719" Margin="101,10,0,0" VerticalAlignment="Center" Height="410">
-                            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="390" x:Name="ProductsInOrder2">
+
+                        <!-- Правая панель с данными о продуктах -->
+                        <StackPanel Width="800" VerticalAlignment="Top">
+                            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="400" x:Name="ProductsInOrder2" Background="#FFFFFF" BorderBrush="#E0E0E0" BorderThickness="1">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}"/>
-                                    <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
-                                    <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}"/>
-                                    <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding Cost}"/>
+                                    <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}" />
+                                    <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}" />
+                                    <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}" />
+                                    <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding Cost}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>
+
+            <!-- Оставить заявку -->
             <TabItem Header="Оставить заявку">
                 <Grid>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="204">
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <!-- Левая панель с выбором товара и количества -->
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,10,0" Width="220">
                             <StackPanel Width="200">
-                                <Label Content="Товар"/>
-                                <ComboBox DisplayMemberPath="Name" x:Name="Products"/>
+                                <Label Content="Товар" FontSize="14"/>
+                                <ComboBox DisplayMemberPath="Name" x:Name="Products" Margin="0,10"/>
                             </StackPanel>
-                            <StackPanel Width="200" Margin="0,10,0,0">
-                                <Label Content="Количество"/>
-                                <TextBox x:Name="Count"/>
+                            <StackPanel Width="200" Margin="0,10">
+                                <Label Content="Количество" FontSize="14"/>
+                                <TextBox x:Name="Count" Margin="0,10"/>
                             </StackPanel>
-                            <Button x:Name="AddProductButton" Content="Добавить" Margin="0,20,0,0" Click="AddProductButton_Click"/>
+                            <Button x:Name="AddProductButton" Content="Добавить" Margin="0,20,0,0" Width="200" Click="AddProductButton_Click"/>
                         </StackPanel>
-                        <StackPanel Width="735" Margin="101,10,0,0" VerticalAlignment="Center">
-                            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="311" x:Name="ProductsInOrder">
+
+                        <!-- Правая панель с данными заявки -->
+                        <StackPanel Width="800" VerticalAlignment="Top">
+                            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="350" x:Name="ProductsInOrder" Background="#FFFFFF" BorderBrush="#E0E0E0" BorderThickness="1">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}"/>
-                                    <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}"/>
-                                    <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}"/>
-                                    <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
-                                    <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding Cost}"/>
-                                    <DataGridTextColumn Width="*" Header="Скидка"  Binding="{Binding Skidka}"/>
-                                    <DataGridTextColumn Width="*" Header="Цена со скидкой" Binding="{Binding CostAfter}"/>
+                                    <DataGridTextColumn Width="*" Header="Артикль" Binding="{Binding ProductArticle}" />
+                                    <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Product.Name}" />
+                                    <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Product.ProductType.Name}" />
+                                    <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}" />
+                                    <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding Cost}" />
+                                    <DataGridTextColumn Width="*" Header="Скидка"  Binding="{Binding Skidka}" />
+                                    <DataGridTextColumn Width="*" Header="Цена со скидкой" Binding="{Binding CostAfter}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                             <Button x:Name="CreateOrderButton" Content="Оставить заявку" Margin="0,20,0,0" Width="200" Click="CreateOrderButton_Click"/>
@@ -67,19 +76,23 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+
+            <!-- Заявки -->
             <TabItem Header="Заявки">
                 <Grid>
-                    <StackPanel Width="750" Margin="0,10,0,0" VerticalAlignment="Center">
-                        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="250" x:Name="Orders" SelectionChanged="Orders_SelectionChanged">
+                    <StackPanel Width="750" Margin="10" VerticalAlignment="Top">
+                        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="250" x:Name="Orders" SelectionChanged="Orders_SelectionChanged" Background="#FFFFFF" BorderBrush="#E0E0E0" BorderThickness="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}"/>
-                                <DataGridTextColumn Width="*" Header="Статус" Binding="{Binding Status}"/>
-                                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
-                                <DataGridTextColumn Width="*" Header="Оплата" Binding="{Binding Oplata}"/>
+                                <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}" />
+                                <DataGridTextColumn Width="*" Header="Статус" Binding="{Binding Status}" />
+                                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}" />
+                                <DataGridTextColumn Width="*" Header="Оплата" Binding="{Binding Oplata}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button x:Name="RemoveOrderButton" IsEnabled="False" Content="Удалить заявку" Margin="0,20,0,0" Width="200" Click="RemoveOrderButton_Click"/>
-                        <Button x:Name="Correct" IsEnabled="False" Content="Произвети оплату" Margin="0,20,0,0" Width="200" Click="Correct_Click"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                            <Button x:Name="RemoveOrderButton" IsEnabled="False" Content="Удалить заявку" Width="200" Margin="0,0,10,0" Click="RemoveOrderButton_Click"/>
+                            <Button x:Name="Correct" IsEnabled="False" Content="Произвести оплату" Width="200" Click="Correct_Click"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>

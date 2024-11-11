@@ -6,9 +6,91 @@
       xmlns:local="clr-namespace:Учебаня_практика.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AnalystPage">
+      Title="Аналитика" Loaded="Page_Loaded">
 
-    <Grid>
-        
+    <Grid Background="#F4E8D3">
+        <TabControl Margin="16,10,16,10">
+            <!-- Поставки материалов -->
+            <TabItem Header="Поставки материалов">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Supplies" Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Склад" Binding="{Binding Store.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Material.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Тип" Binding="{Binding Material.MaterialType.Name}"/>
+                            <DataGridTextColumn Width="*" Header="Количество" Binding="{Binding Amount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Доступ -->
+            <TabItem Header="Доступ">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <StackPanel Width="783" Margin="0,10,0,0" Height="172">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="AuthHistory" Margin="0,0,0,187">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="*" Header="Пользователь" Binding="{Binding UserName}"/>
+                                    <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Width="466" Margin="0,10,0,0">
+                        <Label Content="Поиск по имени" Foreground="#333333"/>
+                        <TextBox x:Name="NameFind" TextChanged="NameFind_TextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+            <!-- История продаж -->
+            <TabItem Header="История продаж">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="Sales" Margin="0,0,0,10" Height="356">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Width="*" Header="Партнёр" Binding="{Binding User.Partner.Name}"/>
+                                <DataGridTextColumn Width="*" Header="Место продажи" Binding="{Binding SalePlace.Name}"/>
+                                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Height="29" Margin="10,0,10,0">
+                            <StackPanel Width="150" Orientation="Horizontal">
+                                <Label Content="Начало" Foreground="#333333"/>
+                                <DatePicker x:Name="StartDate"/>
+                            </StackPanel>
+                            <StackPanel Width="150" Orientation="Horizontal">
+                                <Label Content="Конец" Foreground="#333333"/>
+                                <DatePicker x:Name="EndDate"/>
+                            </StackPanel>
+                            <Button Content="Применить" Background="#67BA80" Foreground="White" BorderThickness="0" Click="Button_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Аналитика произведённой продукции -->
+            <TabItem Header="Аналитика произведённой продукции">
+                <Grid Background="#FFE5E5E5" Height="358">
+                    <StackPanel VerticalAlignment="Top" Margin="10">
+                        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="Orders" Margin="0,0,0,10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Width="*" Header="Статус" Binding="{Binding Status}"/>
+                                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
+                                <DataGridTextColumn Width="*" Header="Оплата" Binding="{Binding Oplata}"/>
+                                <DataGridTextColumn Width="*" Header="Произведён" Binding="{Binding Proizweden}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Label x:Name="ProducedLabel" Content="Произведённых продуктов: " HorizontalAlignment="Left" Width="185" Foreground="#333333"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>
