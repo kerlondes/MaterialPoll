@@ -23,7 +23,7 @@
                                 <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding Date}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button IsEnabled="False" x:Name="EditOrderButton" Content="Редактировать" Margin="10" Width="200" Click="EditOrderButton_Click" Background="#67BA80" Foreground="White" BorderBrush="#67BA80"/>
+                        <Button IsEnabled="False" x:Name="EditOrderButton" Content="Редактировать" Margin="10" Width="200" Click="EditOrderButton_Click"  Background="#67BA80" Foreground="White" BorderBrush="#67BA80"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
