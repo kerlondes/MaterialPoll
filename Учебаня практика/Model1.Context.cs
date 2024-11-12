@@ -52,7 +52,6 @@ namespace Учебаня_практика
         public virtual DbSet<SalePlaceType> SalePlaceTypes { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Supply> Supplies { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }
