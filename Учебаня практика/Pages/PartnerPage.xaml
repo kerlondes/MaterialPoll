@@ -8,7 +8,7 @@
       d:DesignHeight="450"
       Title="PartnerPage" Loaded="Page_Loaded" Width="1062">
 
-    <Grid Background="#F4E8D3">
+    <Grid Background="#F4E8D3" Margin="0,0,0,-15">
         <TabControl Margin="10">
             <!-- Просмотр каталога продукции -->
             <TabItem Header="Просмотр каталога продукции">

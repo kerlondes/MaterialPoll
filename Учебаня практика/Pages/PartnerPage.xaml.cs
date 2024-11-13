@@ -149,7 +149,7 @@ namespace Учебаня_практика.Pages
                 return;
             }
 
-            var orderDto = new Order()
+           var orderDto = new Order()
             {
                 UserID = Session.currentUser.ID, // Используем ID текущего пользователя
                 Date = DateTime.Now,
